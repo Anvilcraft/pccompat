@@ -1,8 +1,7 @@
 package net.anvilcraft.pccompat.tiles;
 
-import covers1624.powerconverters.api.registry.PowerSystemRegistry.PowerSystem;
 import covers1624.powerconverters.tile.main.TileEntityEnergyConsumer;
-import net.anvilcraft.pccompat.PCCompat;
+import net.anvilcraft.pccompat.mods.UniversalElectricityProxy;
 import net.minecraft.util.MathHelper;
 import net.minecraftforge.common.util.ForgeDirection;
 import universalelectricity.core.UniversalElectricity;
@@ -18,7 +17,7 @@ public class TileEntityUniversalElectricityConsumer
 
     public TileEntityUniversalElectricityConsumer(int voltageNameIndex) {
         super(
-                PCCompat.universalElectricityPowerSystem, voltageNameIndex, IConductor.class);
+                UniversalElectricityProxy.powerSystem, voltageNameIndex, IConductor.class);
     }
 
     // TODO: WTF
