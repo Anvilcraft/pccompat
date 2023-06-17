@@ -9,6 +9,7 @@ import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import net.anvilcraft.pccompat.mods.AppliedEnergisticsProxy;
 import net.anvilcraft.pccompat.mods.UniversalElectricityProxy;
 
 @Mod(
@@ -48,5 +49,7 @@ public class PCCompat {
     private static void collectMods() {
         if (Loader.isModLoaded("basiccomponents"))
             mods.add(new UniversalElectricityProxy());
+        if (Loader.isModLoaded("appliedenergistics2"))
+            mods.add(new AppliedEnergisticsProxy());
     }
 }

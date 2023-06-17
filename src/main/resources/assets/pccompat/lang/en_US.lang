@@ -6,3 +6,6 @@ pccompat:power_converter_ue_4.name=UE 240V Consumer
 pccompat:power_converter_ue_5.name=UE 240V Producer
 pccompat:power_converter_ue_6.name=UE 480V Consumer
 pccompat:power_converter_ue_7.name=UE 480V Producer
+
+pccompat:power_converter_ae_0.name=AE Producer
+pccompat:power_converter_ae_1.name=AE Consumer
