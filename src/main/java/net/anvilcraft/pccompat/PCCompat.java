@@ -10,6 +10,7 @@ import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import net.anvilcraft.pccompat.mods.AppliedEnergisticsProxy;
+import net.anvilcraft.pccompat.mods.HBMProxy;
 import net.anvilcraft.pccompat.mods.UniversalElectricityProxy;
 
 @Mod(
@@ -51,5 +52,7 @@ public class PCCompat {
             mods.add(new UniversalElectricityProxy());
         if (Loader.isModLoaded("appliedenergistics2"))
             mods.add(new AppliedEnergisticsProxy());
+        if (Loader.isModLoaded("hbm"))
+            mods.add(new HBMProxy());
     }
 }

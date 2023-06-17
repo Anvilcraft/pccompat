@@ -46,6 +46,7 @@ dependencies {
     implementation "universalelectricity:universalelectricity:5.2.2:deobf"
     implementation "universalelectricity:basiccomponents:2.0.1:deobf"
     implementation "appeng:appliedenergistics2:rv3-beta-21:dev"
+    implementation "com.hbm:HBM-NTM:1.0.27_X4627:deobf"
 }
 
 processResources {
