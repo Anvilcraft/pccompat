@@ -11,6 +11,7 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import net.anvilcraft.pccompat.mods.AppliedEnergisticsProxy;
 import net.anvilcraft.pccompat.mods.HBMProxy;
+import net.anvilcraft.pccompat.mods.RedPowerProxy;
 import net.anvilcraft.pccompat.mods.UniversalElectricityProxy;
 
 @Mod(
@@ -18,7 +19,7 @@ import net.anvilcraft.pccompat.mods.UniversalElectricityProxy;
     name = "PC Compat",
     version = "0.1.0",
     dependencies
-    = "required-after:PowerConverters3;after:basiccomponents;after:ae2;after:hbm"
+    = "required-after:PowerConverters3;after:basiccomponents;after:appliedenergistics2;after:hbm;after:RedPowerCore"
 )
 public class PCCompat {
     public static HashSet<IModProxy> mods = new HashSet<>();
@@ -55,5 +56,7 @@ public class PCCompat {
             mods.add(new AppliedEnergisticsProxy());
         if (Loader.isModLoaded("hbm"))
             mods.add(new HBMProxy());
+        if (Loader.isModLoaded("RedPowerCore"))
+            mods.add(new RedPowerProxy());
     }
 }

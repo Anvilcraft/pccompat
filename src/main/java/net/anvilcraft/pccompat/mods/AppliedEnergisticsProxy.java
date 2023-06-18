@@ -53,7 +53,7 @@ public class AppliedEnergisticsProxy implements IModProxy {
         Optional<ItemStack> cell
             = AEApi.instance().definitions().blocks().energyCell().maybeStack(1);
         if (acceptor.isPresent() || cell.isPresent()) {
-            ItemStack stack = acceptor.isPresent() ? acceptor.get() : cell.get();
+            ItemStack stack = acceptor.or(cell::get);
             new RecipeBuilder(new ShapedOreRecipeAdapter())
                 .pattern("G G", " S ", "G G")
                 .ingredient('G', "ingotGold")
