@@ -6,8 +6,8 @@ import net.anvilcraft.pccompat.mods.HBMProxy;
 import net.minecraft.util.MathHelper;
 import net.minecraftforge.common.util.ForgeDirection;
 
-public class TileEntityHBMConsumer extends TileEntityEnergyConsumer<IEnergyConnector> implements IEnergyConnector {
-
+public class TileEntityHBMConsumer
+    extends TileEntityEnergyConsumer<IEnergyConnector> implements IEnergyConnector {
     private boolean isLoaded = true;
     private boolean recursionBrake = false;
     private boolean transferLastTick = false;
@@ -22,9 +22,15 @@ public class TileEntityHBMConsumer extends TileEntityEnergyConsumer<IEnergyConne
         super.updateEntity();
 
         if (!worldObj.isRemote) {
-			for(ForgeDirection dir : ForgeDirection.VALID_DIRECTIONS)
-				this.trySubscribe(worldObj, xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ, dir);
-		}
+            for (ForgeDirection dir : ForgeDirection.VALID_DIRECTIONS)
+                this.trySubscribe(
+                    worldObj,
+                    xCoord + dir.offsetX,
+                    yCoord + dir.offsetY,
+                    zCoord + dir.offsetZ,
+                    dir
+                );
+        }
 
         if (this.transferLastTick) {
             this.transferLastTick = false;
@@ -32,7 +38,7 @@ public class TileEntityHBMConsumer extends TileEntityEnergyConsumer<IEnergyConne
             this.lastTransfer = 0.0;
         }
     }
-    
+
     @Override
     public double getInputRate() {
         return lastTransfer;
@@ -45,7 +51,8 @@ public class TileEntityHBMConsumer extends TileEntityEnergyConsumer<IEnergyConne
 
     @Override
     public long getMaxPower() {
-        return (long) (this.getTotalEnergyDemand() / this.getPowerSystem().getScaleAmmount());
+        return (long
+        ) (this.getTotalEnergyDemand() / this.getPowerSystem().getScaleAmmount());
     }
 
     @Override
@@ -61,13 +68,16 @@ public class TileEntityHBMConsumer extends TileEntityEnergyConsumer<IEnergyConne
 
     @Override
     public long transferPower(long power) {
-        if (recursionBrake) return power;
+        if (recursionBrake)
+            return power;
 
         this.recursionBrake = true;
 
         long toInsert = power * this.getPowerSystem().getScaleAmmount();
         double leftover = this.storeEnergy(toInsert, false);
-        long ret = MathHelper.floor_double_long(leftover / this.getPowerSystem().getScaleAmmount());
+        long ret = MathHelper.floor_double_long(
+            leftover / this.getPowerSystem().getScaleAmmount()
+        );
 
         this.lastTransfer = power - ret;
 
@@ -76,5 +86,4 @@ public class TileEntityHBMConsumer extends TileEntityEnergyConsumer<IEnergyConne
 
         return ret;
     }
-    
 }

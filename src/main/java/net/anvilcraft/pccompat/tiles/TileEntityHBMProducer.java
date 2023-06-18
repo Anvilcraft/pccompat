@@ -7,8 +7,8 @@ import net.anvilcraft.pccompat.mods.HBMProxy;
 import net.minecraft.util.MathHelper;
 import net.minecraftforge.common.util.ForgeDirection;
 
-public class TileEntityHBMProducer extends TileEntityEnergyProducer<IEnergyConnector> implements IEnergyGenerator {
-
+public class TileEntityHBMProducer
+    extends TileEntityEnergyProducer<IEnergyConnector> implements IEnergyGenerator {
     private boolean isLoaded = true;
     private boolean recursionBrake = false;
     private long subBuffer = 0;
@@ -19,17 +19,25 @@ public class TileEntityHBMProducer extends TileEntityEnergyProducer<IEnergyConne
 
     @Override
     public double produceEnergy(double energy) {
-
-        if (this.recursionBrake) return energy;
+        if (this.recursionBrake)
+            return energy;
 
         this.recursionBrake = true;
 
-        long toProduce = MathHelper.floor_double_long(energy / this.getPowerSystem().getScaleAmmount());
+        long toProduce = MathHelper.floor_double_long(
+            energy / this.getPowerSystem().getScaleAmmount()
+        );
         this.subBuffer = toProduce;
 
-        for(ForgeDirection dir : ForgeDirection.VALID_DIRECTIONS) {
-			this.sendPower(worldObj, xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ, dir);
-		}
+        for (ForgeDirection dir : ForgeDirection.VALID_DIRECTIONS) {
+            this.sendPower(
+                worldObj,
+                xCoord + dir.offsetX,
+                yCoord + dir.offsetY,
+                zCoord + dir.offsetZ,
+                dir
+            );
+        }
 
         this.recursionBrake = false;
 
@@ -64,5 +72,4 @@ public class TileEntityHBMProducer extends TileEntityEnergyProducer<IEnergyConne
         this.isLoaded = false;
         super.onChunkUnload();
     }
-
 }

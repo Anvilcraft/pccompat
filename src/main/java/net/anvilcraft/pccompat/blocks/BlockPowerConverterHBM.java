@@ -8,15 +8,13 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
 public class BlockPowerConverterHBM extends BlockPowerConverter {
-    
     public BlockPowerConverterHBM() {
         super(2);
         this.setCreativeTab(PCCreativeTab.tab);
     }
-    
+
     @Override
     public TileEntity createNewTileEntity(World world, int meta) {
         return meta == 0 ? new TileEntityHBMProducer() : new TileEntityHBMConsumer();
     }
-
 }

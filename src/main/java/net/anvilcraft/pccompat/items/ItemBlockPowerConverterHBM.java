@@ -10,7 +10,6 @@ import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 
 public class ItemBlockPowerConverterHBM extends ItemBlock {
-    
     public ItemBlockPowerConverterHBM(Block block) {
         super(block);
         this.setHasSubtypes(true);
@@ -36,5 +35,4 @@ public class ItemBlockPowerConverterHBM extends ItemBlock {
             .mapToObj((i) -> new ItemStack(this, 1, i))
             .forEach(list::add);
     }
-
 }

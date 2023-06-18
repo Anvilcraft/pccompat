@@ -13,9 +13,7 @@ import universalelectricity.core.electricity.ElectricityPack;
 public class TileEntityUniversalElectricityProducer
     extends TileEntityEnergyProducer<IConductor> implements IConnector, IVoltage {
     public TileEntityUniversalElectricityProducer(int voltageNameIndex) {
-        super(
-            UniversalElectricityProxy.powerSystem, voltageNameIndex, IConductor.class
-        );
+        super(UniversalElectricityProxy.powerSystem, voltageNameIndex, IConductor.class);
     }
 
     // TODO: WTF

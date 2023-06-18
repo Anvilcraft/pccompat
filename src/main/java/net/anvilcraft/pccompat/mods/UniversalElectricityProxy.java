@@ -86,18 +86,12 @@ public class UniversalElectricityProxy implements IModProxy {
 
         for (int i = 0; i < 8; i += 2) {
             new RecipeBuilder(new ShapelessOreRecipeAdapter())
-                .ingredient(
-                    new ItemStack(blockPowerConverter, 1, i)
-                )
-                .output(
-                    new ItemStack(blockPowerConverter, 1, i + 1)
-                )
+                .ingredient(new ItemStack(blockPowerConverter, 1, i))
+                .output(new ItemStack(blockPowerConverter, 1, i + 1))
                 .register();
 
             new RecipeBuilder(new ShapelessOreRecipeAdapter())
-                .ingredient(
-                    new ItemStack(blockPowerConverter, 1, i + 1)
-                )
+                .ingredient(new ItemStack(blockPowerConverter, 1, i + 1))
                 .output(new ItemStack(blockPowerConverter, 1, i))
                 .register();
         }

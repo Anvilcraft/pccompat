@@ -17,7 +17,8 @@ import net.anvilcraft.pccompat.mods.UniversalElectricityProxy;
     modid = "pccompat",
     name = "PC Compat",
     version = "0.1.0",
-    dependencies = "required-after:PowerConverters3;after:basiccomponents"
+    dependencies
+    = "required-after:PowerConverters3;after:basiccomponents;after:ae2;after:hbm"
 )
 public class PCCompat {
     public static HashSet<IModProxy> mods = new HashSet<>();

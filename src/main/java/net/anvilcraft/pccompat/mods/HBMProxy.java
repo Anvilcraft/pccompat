@@ -1,7 +1,6 @@
 package net.anvilcraft.pccompat.mods;
 
 import com.hbm.blocks.ModBlocks;
-
 import covers1624.powerconverters.api.registry.PowerSystemRegistry;
 import covers1624.powerconverters.api.registry.PowerSystemRegistry.PowerSystem;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -17,25 +16,23 @@ import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 
 public class HBMProxy implements IModProxy {
-
     public static PowerSystem powerSystem;
     public static Block blockPowerConverter;
 
     @Override
     public void registerPowerSystem() {
         PowerSystemRegistry.registerPowerSystem(
-            powerSystem = new PowerSystem(
-                "HBM",
-                "HBM",
-                4000,
-                "HE"
-            )
+            powerSystem = new PowerSystem("HBM", "HBM", 4000, "HE")
         );
     }
 
     @Override
     public void registerBlocks() {
-        GameRegistry.registerBlock(blockPowerConverter = new BlockPowerConverterHBM(), ItemBlockPowerConverterHBM.class, "power_converter_hbm");
+        GameRegistry.registerBlock(
+            blockPowerConverter = new BlockPowerConverterHBM(),
+            ItemBlockPowerConverterHBM.class,
+            "power_converter_hbm"
+        );
     }
 
     @Override
@@ -46,32 +43,23 @@ public class HBMProxy implements IModProxy {
 
     @Override
     public void registerRecipes() {
-        
         ItemStack cable = new ItemStack(ModBlocks.red_cable);
 
         new RecipeBuilder(new ShapedOreRecipeAdapter())
             .pattern("G G", " C ", "G G")
             .ingredient('G', "ingotGold")
             .ingredient('C', cable)
-            .output(new ItemStack(blockPowerConverter, 1 ,0))
-            .register();
-        
-
-        new RecipeBuilder(new ShapelessOreRecipeAdapter())
-            .ingredient(
-                new ItemStack(blockPowerConverter, 1, 0)
-            )
-            .output(
-                new ItemStack(blockPowerConverter, 1, 1)
-            )
+            .output(new ItemStack(blockPowerConverter, 1, 0))
             .register();
 
         new RecipeBuilder(new ShapelessOreRecipeAdapter())
-            .ingredient(
-                new ItemStack(blockPowerConverter, 1, 1)
-            )
+            .ingredient(new ItemStack(blockPowerConverter, 1, 0))
+            .output(new ItemStack(blockPowerConverter, 1, 1))
+            .register();
+
+        new RecipeBuilder(new ShapelessOreRecipeAdapter())
+            .ingredient(new ItemStack(blockPowerConverter, 1, 1))
             .output(new ItemStack(blockPowerConverter, 1, 0))
             .register();
     }
-    
 }

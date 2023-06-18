@@ -8,15 +8,14 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
 public class BlockPowerConverterAppliedEnergistics extends BlockPowerConverter {
-
     public BlockPowerConverterAppliedEnergistics() {
         super(2);
         this.setCreativeTab(PCCreativeTab.tab);
     }
-    
+
     @Override
     public TileEntity createNewTileEntity(World world, int meta) {
-        return meta == 0 ? new TileEntityAppliedEnergisticsProducer() : new TileEntityAppliedEnergisticsConsumer();
+        return meta == 0 ? new TileEntityAppliedEnergisticsProducer()
+                         : new TileEntityAppliedEnergisticsConsumer();
     }
-
 }

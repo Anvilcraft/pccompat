@@ -17,15 +17,20 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.MathHelper;
 import net.minecraftforge.common.util.ForgeDirection;
 
-public class TileEntityAppliedEnergisticsConsumer extends TileEntityEnergyConsumer<IGridHost> implements IGridProxyable {
-
+public class TileEntityAppliedEnergisticsConsumer
+    extends TileEntityEnergyConsumer<IGridHost> implements IGridProxyable {
     private AENetworkProxy proxy;
     private boolean init = false;
     private double lastInserted = 0.0;
 
     public TileEntityAppliedEnergisticsConsumer() {
         super(AppliedEnergisticsProxy.powerSystem, 0, IGridHost.class);
-        this.proxy = new AENetworkProxy(this, "proxy", new ItemStack(AppliedEnergisticsProxy.blockPowerConverter, 1, 1), true);
+        this.proxy = new AENetworkProxy(
+            this,
+            "proxy",
+            new ItemStack(AppliedEnergisticsProxy.blockPowerConverter, 1, 1),
+            true
+        );
         this.proxy.setIdlePowerUsage(0.0);
     }
 
@@ -60,9 +65,7 @@ public class TileEntityAppliedEnergisticsConsumer extends TileEntityEnergyConsum
     }
 
     @Override
-    public void gridChanged() {
-        
-    }
+    public void gridChanged() {}
 
     @Override
     public void readFromNBT(NBTTagCompound tagCompound) {
@@ -101,20 +104,26 @@ public class TileEntityAppliedEnergisticsConsumer extends TileEntityEnergyConsum
             init = true;
             this.getProxy().onReady();
         }
-        if (this.worldObj.isRemote) return;
+        if (this.worldObj.isRemote)
+            return;
 
-        double aeDemand = this.getTotalEnergyDemand() / this.getPowerSystem().getScaleAmmount();
+        double aeDemand
+            = this.getTotalEnergyDemand() / this.getPowerSystem().getScaleAmmount();
 
         try {
             IEnergyGrid grid = this.getProxy().getEnergy();
-            double extracted = grid.extractAEPower(aeDemand, Actionable.MODULATE, PowerMultiplier.ONE);
-            this.storeEnergy(MathHelper.floor_double(extracted * this.getPowerSystem().getScaleAmmount()), false);
+            double extracted
+                = grid.extractAEPower(aeDemand, Actionable.MODULATE, PowerMultiplier.ONE);
+            this.storeEnergy(
+                MathHelper.floor_double(
+                    extracted * this.getPowerSystem().getScaleAmmount()
+                ),
+                false
+            );
             this.lastInserted = extracted;
         } catch (GridAccessException e) {
             // :P
             lastInserted = 0.0;
         }
-
     }
-    
 }

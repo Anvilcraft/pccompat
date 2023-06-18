@@ -16,14 +16,19 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.MathHelper;
 import net.minecraftforge.common.util.ForgeDirection;
 
-public class TileEntityAppliedEnergisticsProducer extends TileEntityEnergyProducer<IGridHost> implements IGridProxyable {
-
+public class TileEntityAppliedEnergisticsProducer
+    extends TileEntityEnergyProducer<IGridHost> implements IGridProxyable {
     private AENetworkProxy proxy;
     private boolean init = false;
 
     public TileEntityAppliedEnergisticsProducer() {
         super(AppliedEnergisticsProxy.powerSystem, 0, IGridHost.class);
-        this.proxy = new AENetworkProxy(this, "proxy", new ItemStack(AppliedEnergisticsProxy.blockPowerConverter, 1, 0), true);
+        this.proxy = new AENetworkProxy(
+            this,
+            "proxy",
+            new ItemStack(AppliedEnergisticsProxy.blockPowerConverter, 1, 0),
+            true
+        );
         this.proxy.setIdlePowerUsage(0.0);
     }
 
@@ -38,7 +43,7 @@ public class TileEntityAppliedEnergisticsProducer extends TileEntityEnergyProduc
         } catch (GridAccessException e) {
             // :P
         }
-        
+
         return MathHelper.floor_double(ae * this.getPowerSystem().getScaleAmmount());
     }
 
@@ -68,9 +73,7 @@ public class TileEntityAppliedEnergisticsProducer extends TileEntityEnergyProduc
     }
 
     @Override
-    public void gridChanged() {
-        
-    }
+    public void gridChanged() {}
 
     @Override
     public void readFromNBT(NBTTagCompound tagCompound) {
@@ -110,5 +113,4 @@ public class TileEntityAppliedEnergisticsProducer extends TileEntityEnergyProduc
             this.getProxy().onReady();
         }
     }
-    
 }
