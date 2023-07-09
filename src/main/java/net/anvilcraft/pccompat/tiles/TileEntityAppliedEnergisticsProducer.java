@@ -26,7 +26,7 @@ public class TileEntityAppliedEnergisticsProducer
         this.proxy = new AENetworkProxy(
             this,
             "proxy",
-            new ItemStack(AppliedEnergisticsProxy.blockPowerConverter, 1, 0),
+            new ItemStack(AppliedEnergisticsProxy.blockPowerConverter, 1, 1),
             true
         );
         this.proxy.setIdlePowerUsage(0.0);

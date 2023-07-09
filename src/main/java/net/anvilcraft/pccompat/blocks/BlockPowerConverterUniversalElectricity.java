@@ -21,7 +21,7 @@ public class BlockPowerConverterUniversalElectricity extends BlockPowerConverter
     public void registerBlockIcons(IIconRegister reg) {
         for (int i = 0; i < 16; i++) {
             String state = i % 2 == 0 ? "off" : "on";
-            String type = (i / 2) % 2 == 0 ? "producer" : "consumer";
+            String type = (i / 2) % 2 == 0 ? "consumer" : "producer";
 
             String voltage;
 
