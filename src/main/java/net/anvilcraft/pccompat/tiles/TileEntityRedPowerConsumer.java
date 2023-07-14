@@ -19,13 +19,13 @@ public class TileEntityRedPowerConsumer extends TileEntityEnergyConsumer<TileBat
         super.updateEntity();
 
         btLastTick = 0;
-        for (Entry<ForgeDirection, TileBatteryBox> box : getTiles().entrySet()) {
+        for (Entry<ForgeDirection, TileBatteryBox> box : this.getTiles().entrySet()) {
             double toStore = Math.min(
                 box.getValue().Storage,
-                getTotalEnergyDemand() / getPowerSystem().getScaleAmmount()
+                getTotalEnergyDemand() / this.getPowerSystem().getScaleAmmount()
             );
             box.getValue().Storage -= toStore;
-            this.storeEnergy(toStore * getPowerSystem().getScaleAmmount(), false);
+            this.storeEnergy(toStore * this.getPowerSystem().getScaleAmmount(), false);
             box.getValue().getWorldObj().markBlockForUpdate(
                 box.getValue().xCoord, box.getValue().yCoord, box.getValue().zCoord
             );
@@ -35,6 +35,6 @@ public class TileEntityRedPowerConsumer extends TileEntityEnergyConsumer<TileBat
 
     @Override
     public double getInputRate() {
-        return btLastTick;
+        return this.btLastTick;
     }
 }

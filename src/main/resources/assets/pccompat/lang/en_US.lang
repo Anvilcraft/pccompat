@@ -15,3 +15,6 @@ pccompat:power_converter_hbm_1.name=HBM Producer
 
 pccompat:power_converter_rp_0.name=Bluetricity Consumer
 pccompat:power_converter_rp_1.name=Bluetricity Producer
+
+pccompat:power_converter_pr_0.name=Bluetricity Consumer
+pccompat:power_converter_pr_1.name=Bluetricity Producer

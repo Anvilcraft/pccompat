@@ -11,6 +11,7 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import net.anvilcraft.pccompat.mods.AppliedEnergisticsProxy;
 import net.anvilcraft.pccompat.mods.HBMProxy;
+import net.anvilcraft.pccompat.mods.ProjectRedProxy;
 import net.anvilcraft.pccompat.mods.RedPowerProxy;
 import net.anvilcraft.pccompat.mods.UniversalElectricityProxy;
 
@@ -19,7 +20,7 @@ import net.anvilcraft.pccompat.mods.UniversalElectricityProxy;
     name = "PC Compat",
     version = "0.1.0",
     dependencies
-    = "required-after:PowerConverters3;after:basiccomponents;after:appliedenergistics2;after:hbm;after:RedPowerCore"
+    = "required-after:PowerConverters3;after:basiccomponents;after:appliedenergistics2;after:hbm;after:RedPowerCore;after:ProjRed|Expansion"
 )
 public class PCCompat {
     public static HashSet<IModProxy> mods = new HashSet<>();
@@ -28,7 +29,7 @@ public class PCCompat {
     public static void preInit(FMLPreInitializationEvent ev) {
         collectMods();
         try {
-            // Fix IC2 scale "Ammount" due to mod outragous developer incompetence
+            // Fix IC2 scale "Ammount" due to outragous mod developer incompetence
             Field field = PowerSystem.class.getDeclaredField("scaleAmmount");
             field.setAccessible(true);
             field.setInt(PowerSystems.powerSystemIndustrialCraft, 4000);
@@ -58,5 +59,7 @@ public class PCCompat {
             mods.add(new HBMProxy());
         if (Loader.isModLoaded("RedPowerCore"))
             mods.add(new RedPowerProxy());
+        if (Loader.isModLoaded("ProjRed|Expansion"))
+            mods.add(new ProjectRedProxy());
     }
 }
