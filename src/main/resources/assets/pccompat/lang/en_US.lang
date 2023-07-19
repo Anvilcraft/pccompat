@@ -30,3 +30,6 @@ pccompat:power_converter_gt_7.name=GregTech EV Producer
 
 pccompat:power_converter_ut_0.name=Quantum Power Consumer
 pccompat:power_converter_ut_1.name=Quantum Power Producer
+
+pccompat:power_converter_rc_0.name=Railcraft Consumer
+pccompat:power_converter_rc_1.name=Railcraft Producer
