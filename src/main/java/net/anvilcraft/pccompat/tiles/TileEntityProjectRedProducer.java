@@ -19,14 +19,14 @@ public class TileEntityProjectRedProducer
         for (Entry<ForgeDirection, TPowerStorage> box : this.getTiles().entrySet()) {
             int toStore = (int) Math.min(
                 (box.getValue().getMaxStorage() - box.getValue().storage()),
-                energy / getPowerSystem().getScaleAmmount()
+                energy / this.getPowerSystem().getScaleAmmount()
             );
             box.getValue().storage_$eq(box.getValue().storage() + toStore);
             TileEntity boxTE = (TileEntity) box.getValue();
             boxTE.getWorldObj().markBlockForUpdate(
                 boxTE.xCoord, boxTE.yCoord, boxTE.zCoord
             );
-            energy -= toStore * getPowerSystem().getScaleAmmount();
+            energy -= toStore * this.getPowerSystem().getScaleAmmount();
         }
         return energy;
     }
