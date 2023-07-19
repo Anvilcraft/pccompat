@@ -14,6 +14,7 @@ import net.anvilcraft.pccompat.mods.GregTechProxy;
 import net.anvilcraft.pccompat.mods.HBMProxy;
 import net.anvilcraft.pccompat.mods.ProjectRedProxy;
 import net.anvilcraft.pccompat.mods.RedPowerProxy;
+import net.anvilcraft.pccompat.mods.UltraTechProxy;
 import net.anvilcraft.pccompat.mods.UniversalElectricityProxy;
 
 @Mod(
@@ -21,7 +22,7 @@ import net.anvilcraft.pccompat.mods.UniversalElectricityProxy;
     name = "PC Compat",
     version = "0.1.0",
     dependencies
-    = "required-after:PowerConverters3;after:basiccomponents;after:appliedenergistics2;after:hbm;after:RedPowerCore;after:ProjRed|Expansion;after:gregtech"
+    = "required-after:PowerConverters3;after:basiccomponents;after:appliedenergistics2;after:hbm;after:RedPowerCore;after:ProjRed|Expansion;after:gregtech;after:UltraTech"
 )
 public class PCCompat {
     public static HashSet<IModProxy> mods = new HashSet<>();
@@ -64,5 +65,7 @@ public class PCCompat {
             mods.add(new ProjectRedProxy());
         if (Loader.isModLoaded("gregtech"))
             mods.add(new GregTechProxy());
+        if (Loader.isModLoaded("UltraTech"))
+            mods.add(new UltraTechProxy());
     }
 }

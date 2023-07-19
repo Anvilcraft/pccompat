@@ -19,11 +19,14 @@ pccompat:power_converter_rp_1.name=Bluetricity Producer
 pccompat:power_converter_pr_0.name=Bluetricity Consumer
 pccompat:power_converter_pr_1.name=Bluetricity Producer
 
-pccompat:power_converter_gregtech_0.name=GregTech LV Consumer
-pccompat:power_converter_gregtech_1.name=GregTech LV Producer
-pccompat:power_converter_gregtech_2.name=GregTech MV Consumer
-pccompat:power_converter_gregtech_3.name=GregTech MV Producer
-pccompat:power_converter_gregtech_4.name=GregTech HV Consumer
-pccompat:power_converter_gregtech_5.name=GregTech HV Producer
-pccompat:power_converter_gregtech_6.name=GregTech EV Consumer
-pccompat:power_converter_gregtech_7.name=GregTech EV Producer
+pccompat:power_converter_gt_0.name=GregTech LV Consumer
+pccompat:power_converter_gt_1.name=GregTech LV Producer
+pccompat:power_converter_gt_2.name=GregTech MV Consumer
+pccompat:power_converter_gt_3.name=GregTech MV Producer
+pccompat:power_converter_gt_4.name=GregTech HV Consumer
+pccompat:power_converter_gt_5.name=GregTech HV Producer
+pccompat:power_converter_gt_6.name=GregTech EV Consumer
+pccompat:power_converter_gt_7.name=GregTech EV Producer
+
+pccompat:power_converter_ut_0.name=Quantum Power Consumer
+pccompat:power_converter_ut_1.name=Quantum Power Producer
