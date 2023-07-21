@@ -23,7 +23,7 @@ public class AppliedEnergisticsProxy implements IModProxy {
     @Override
     public void registerPowerSystem() {
         PowerSystemRegistry.registerPowerSystem(
-            powerSystem = new PowerSystem("Applied Energistics", "AE", 2000, "AE")
+            powerSystem = new PowerSystem("Applied Energistics", "AE", 2000, "AE/t")
         );
     }
 

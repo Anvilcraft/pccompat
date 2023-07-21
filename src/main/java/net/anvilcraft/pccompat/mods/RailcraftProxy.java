@@ -18,7 +18,7 @@ public class RailcraftProxy implements IModProxy {
     @Override
     public void registerPowerSystem() {
         PowerSystemRegistry.registerPowerSystem(
-            powerSystem = new PowerSystem("Railcraft", "Charge", 4000, "C")
+            powerSystem = new PowerSystem("Railcraft", "Charge", 4000, "C/t")
         );
     }
 

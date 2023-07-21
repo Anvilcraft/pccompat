@@ -22,7 +22,7 @@ public class HBMProxy implements IModProxy {
     @Override
     public void registerPowerSystem() {
         PowerSystemRegistry.registerPowerSystem(
-            powerSystem = new PowerSystem("HBM", "HBM", 4000, "HE")
+            powerSystem = new PowerSystem("HBM", "HE", 4000, "HE/t")
         );
     }
 
