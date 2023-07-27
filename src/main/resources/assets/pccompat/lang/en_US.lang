@@ -33,3 +33,6 @@ pccompat:power_converter_ut_1.name=Quantum Power Producer
 
 pccompat:power_converter_rc_0.name=Railcraft Consumer
 pccompat:power_converter_rc_1.name=Railcraft Producer
+
+pccompat:power_converter_mc_0.name=Magneticraft Consumer
+pccompat:power_converter_mc_1.name=Magneticraft Producer

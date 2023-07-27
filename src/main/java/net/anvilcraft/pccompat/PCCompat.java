@@ -12,6 +12,7 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import net.anvilcraft.pccompat.mods.AppliedEnergisticsProxy;
 import net.anvilcraft.pccompat.mods.GregTechProxy;
 import net.anvilcraft.pccompat.mods.HBMProxy;
+import net.anvilcraft.pccompat.mods.MagneticraftProxy;
 import net.anvilcraft.pccompat.mods.ProjectRedProxy;
 import net.anvilcraft.pccompat.mods.RailcraftProxy;
 import net.anvilcraft.pccompat.mods.RedPowerProxy;
@@ -23,7 +24,7 @@ import net.anvilcraft.pccompat.mods.UniversalElectricityProxy;
     name = "PC Compat",
     version = "0.1.0",
     dependencies
-    = "required-after:PowerConverters3;after:basiccomponents;after:appliedenergistics2;after:hbm;after:RedPowerCore;after:ProjRed|Expansion;after:gregtech;after:UltraTech;after:Railcraft"
+    = "required-after:PowerConverters3;after:basiccomponents;after:appliedenergistics2;after:hbm;after:RedPowerCore;after:ProjRed|Expansion;after:gregtech;after:UltraTech;after:Railcraft;after:Magneticraft"
 )
 public class PCCompat {
     public static HashSet<IModProxy> mods = new HashSet<>();
@@ -70,5 +71,7 @@ public class PCCompat {
             mods.add(new UltraTechProxy());
         if (Loader.isModLoaded("Railcraft"))
             mods.add(new RailcraftProxy());
+        if (Loader.isModLoaded("Magneticraft"))
+            mods.add(new MagneticraftProxy());
     }
 }
