@@ -3,12 +3,17 @@ package net.anvilcraft.pccompat.mods;
 import covers1624.powerconverters.api.registry.PowerSystemRegistry;
 import covers1624.powerconverters.api.registry.PowerSystemRegistry.PowerSystem;
 import cpw.mods.fml.common.registry.GameRegistry;
+import mrtjp.projectred.ProjectRedExpansion;
 import net.anvilcraft.pccompat.IModProxy;
+import net.anvilcraft.pccompat.Utils;
 import net.anvilcraft.pccompat.blocks.BlockPCCConverter;
 import net.anvilcraft.pccompat.items.ItemBlockPowerConverter;
+import net.anvilcraft.pccompat.recipe.RecipeBuilder;
+import net.anvilcraft.pccompat.recipe.ShapedOreRecipeAdapter;
 import net.anvilcraft.pccompat.tiles.TileEntityProjectRedConsumer;
 import net.anvilcraft.pccompat.tiles.TileEntityProjectRedProducer;
 import net.minecraft.block.Block;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 
 public class ProjectRedProxy implements IModProxy {
@@ -42,7 +47,16 @@ public class ProjectRedProxy implements IModProxy {
     }
 
     @Override
-    public void registerRecipes() {}
+    public void registerRecipes() {
+        new RecipeBuilder(new ShapedOreRecipeAdapter())
+            .pattern("G G", " B ", "G G")
+            .ingredient('G', "ingotGold")
+            .ingredient('B', new ItemStack(ProjectRedExpansion.machine2(), 1, 5))
+            .output(blockPowerConverter)
+            .register();
+
+        Utils.registerConversionRecipes(blockPowerConverter, 0, 1);
+    }
 
     @Override
     public String getModPrefix() {

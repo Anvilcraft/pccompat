@@ -5,11 +5,11 @@ import covers1624.powerconverters.api.registry.PowerSystemRegistry;
 import covers1624.powerconverters.api.registry.PowerSystemRegistry.PowerSystem;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.anvilcraft.pccompat.IModProxy;
+import net.anvilcraft.pccompat.Utils;
 import net.anvilcraft.pccompat.blocks.BlockPowerConverterUniversalElectricity;
 import net.anvilcraft.pccompat.items.ItemBlockPowerConverter;
 import net.anvilcraft.pccompat.recipe.RecipeBuilder;
 import net.anvilcraft.pccompat.recipe.ShapedOreRecipeAdapter;
-import net.anvilcraft.pccompat.recipe.ShapelessOreRecipeAdapter;
 import net.anvilcraft.pccompat.tiles.TileEntityUniversalElectricityConsumer;
 import net.anvilcraft.pccompat.tiles.TileEntityUniversalElectricityProducer;
 import net.minecraft.block.Block;
@@ -86,15 +86,7 @@ public class UniversalElectricityProxy implements IModProxy {
             .register();
 
         for (int i = 0; i < 8; i += 2) {
-            new RecipeBuilder(new ShapelessOreRecipeAdapter())
-                .ingredient(new ItemStack(blockPowerConverter, 1, i))
-                .output(new ItemStack(blockPowerConverter, 1, i + 1))
-                .register();
-
-            new RecipeBuilder(new ShapelessOreRecipeAdapter())
-                .ingredient(new ItemStack(blockPowerConverter, 1, i + 1))
-                .output(new ItemStack(blockPowerConverter, 1, i))
-                .register();
+            Utils.registerConversionRecipes(blockPowerConverter, i, i + 1);
         }
     }
 

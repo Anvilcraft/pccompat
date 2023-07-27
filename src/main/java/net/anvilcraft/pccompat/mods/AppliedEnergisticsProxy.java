@@ -7,11 +7,11 @@ import covers1624.powerconverters.api.registry.PowerSystemRegistry;
 import covers1624.powerconverters.api.registry.PowerSystemRegistry.PowerSystem;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.anvilcraft.pccompat.IModProxy;
+import net.anvilcraft.pccompat.Utils;
 import net.anvilcraft.pccompat.blocks.BlockPCCConverter;
 import net.anvilcraft.pccompat.items.ItemBlockPowerConverter;
 import net.anvilcraft.pccompat.recipe.RecipeBuilder;
 import net.anvilcraft.pccompat.recipe.ShapedOreRecipeAdapter;
-import net.anvilcraft.pccompat.recipe.ShapelessOreRecipeAdapter;
 import net.anvilcraft.pccompat.tiles.TileEntityAppliedEnergisticsConsumer;
 import net.anvilcraft.pccompat.tiles.TileEntityAppliedEnergisticsProducer;
 import net.minecraft.block.Block;
@@ -60,19 +60,11 @@ public class AppliedEnergisticsProxy implements IModProxy {
                 .pattern("G G", " S ", "G G")
                 .ingredient('G', "ingotGold")
                 .ingredient('S', stack)
-                .output(new ItemStack(blockPowerConverter, 1, 0))
+                .output(blockPowerConverter)
                 .register();
         }
 
-        new RecipeBuilder(new ShapelessOreRecipeAdapter())
-            .ingredient(new ItemStack(blockPowerConverter, 1, 0))
-            .output(new ItemStack(blockPowerConverter, 1, 1))
-            .register();
-
-        new RecipeBuilder(new ShapelessOreRecipeAdapter())
-            .ingredient(new ItemStack(blockPowerConverter, 1, 1))
-            .output(new ItemStack(blockPowerConverter, 1, 0))
-            .register();
+        Utils.registerConversionRecipes(blockPowerConverter, 0, 1);
     }
 
     @Override
