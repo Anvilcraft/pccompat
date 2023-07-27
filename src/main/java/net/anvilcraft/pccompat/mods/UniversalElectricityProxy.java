@@ -6,7 +6,7 @@ import covers1624.powerconverters.api.registry.PowerSystemRegistry.PowerSystem;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.anvilcraft.pccompat.IModProxy;
 import net.anvilcraft.pccompat.blocks.BlockPowerConverterUniversalElectricity;
-import net.anvilcraft.pccompat.items.ItemBlockPowerConverterUniversalElectricity;
+import net.anvilcraft.pccompat.items.ItemBlockPowerConverter;
 import net.anvilcraft.pccompat.recipe.RecipeBuilder;
 import net.anvilcraft.pccompat.recipe.ShapedOreRecipeAdapter;
 import net.anvilcraft.pccompat.recipe.ShapelessOreRecipeAdapter;
@@ -14,6 +14,7 @@ import net.anvilcraft.pccompat.tiles.TileEntityUniversalElectricityConsumer;
 import net.anvilcraft.pccompat.tiles.TileEntityUniversalElectricityProducer;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
 
 public class UniversalElectricityProxy implements IModProxy {
     public static PowerSystem powerSystem;
@@ -36,8 +37,8 @@ public class UniversalElectricityProxy implements IModProxy {
     @Override
     public void registerBlocks() {
         GameRegistry.registerBlock(
-            blockPowerConverter = new BlockPowerConverterUniversalElectricity(),
-            ItemBlockPowerConverterUniversalElectricity.class,
+            blockPowerConverter = new BlockPowerConverterUniversalElectricity(this),
+            ItemBlockPowerConverter.class,
             "power_converter_universal_electrictity"
         );
     }
@@ -95,5 +96,21 @@ public class UniversalElectricityProxy implements IModProxy {
                 .output(new ItemStack(blockPowerConverter, 1, i))
                 .register();
         }
+    }
+
+    @Override
+    public int getMetaCount() {
+        return 8;
+    }
+
+    @Override
+    public String getModPrefix() {
+        return "ue";
+    }
+
+    @Override
+    public TileEntity createTileEntity(int meta) {
+        return meta % 2 != 0 ? new TileEntityUniversalElectricityProducer(meta / 2)
+                             : new TileEntityUniversalElectricityConsumer(meta / 2);
     }
 }

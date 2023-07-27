@@ -4,11 +4,12 @@ import covers1624.powerconverters.api.registry.PowerSystemRegistry;
 import covers1624.powerconverters.api.registry.PowerSystemRegistry.PowerSystem;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.anvilcraft.pccompat.IModProxy;
-import net.anvilcraft.pccompat.blocks.BlockPowerConverterMagneticraft;
-import net.anvilcraft.pccompat.items.ItemBlockPowerConverterMagneticraft;
+import net.anvilcraft.pccompat.blocks.BlockPCCConverter;
+import net.anvilcraft.pccompat.items.ItemBlockPowerConverter;
 import net.anvilcraft.pccompat.tiles.TileEntityMagneticraftConsumer;
 import net.anvilcraft.pccompat.tiles.TileEntityMagneticraftProducer;
 import net.minecraft.block.Block;
+import net.minecraft.tileentity.TileEntity;
 
 public class MagneticraftProxy implements IModProxy {
     public static PowerSystem powerSystem;
@@ -24,8 +25,8 @@ public class MagneticraftProxy implements IModProxy {
     @Override
     public void registerBlocks() {
         GameRegistry.registerBlock(
-            blockPowerConverter = new BlockPowerConverterMagneticraft(),
-            ItemBlockPowerConverterMagneticraft.class,
+            blockPowerConverter = new BlockPCCConverter(this),
+            ItemBlockPowerConverter.class,
             "power_converter_magneticraft"
         );
     }
@@ -42,4 +43,15 @@ public class MagneticraftProxy implements IModProxy {
 
     @Override
     public void registerRecipes() {}
+
+    @Override
+    public String getModPrefix() {
+        return "mc";
+    }
+
+    @Override
+    public TileEntity createTileEntity(int meta) {
+        return meta == 0 ? new TileEntityMagneticraftConsumer()
+                         : new TileEntityMagneticraftProducer();
+    }
 }

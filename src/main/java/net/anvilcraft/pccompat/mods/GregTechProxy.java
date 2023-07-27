@@ -5,10 +5,11 @@ import covers1624.powerconverters.api.registry.PowerSystemRegistry.PowerSystem;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.anvilcraft.pccompat.IModProxy;
 import net.anvilcraft.pccompat.blocks.BlockPowerConverterGregTech;
-import net.anvilcraft.pccompat.items.ItemBlockPowerConverterGregTech;
+import net.anvilcraft.pccompat.items.ItemBlockPowerConverter;
 import net.anvilcraft.pccompat.tiles.TileEntityGregTechConsumer;
 import net.anvilcraft.pccompat.tiles.TileEntityGregTechProducer;
 import net.minecraft.block.Block;
+import net.minecraft.tileentity.TileEntity;
 
 public class GregTechProxy implements IModProxy {
     public static PowerSystem powerSystem;
@@ -31,8 +32,8 @@ public class GregTechProxy implements IModProxy {
     @Override
     public void registerBlocks() {
         GameRegistry.registerBlock(
-            blockPowerConverter = new BlockPowerConverterGregTech(),
-            ItemBlockPowerConverterGregTech.class,
+            blockPowerConverter = new BlockPowerConverterGregTech(this),
+            ItemBlockPowerConverter.class,
             "power_converter_gregtech"
         );
     }
@@ -49,4 +50,20 @@ public class GregTechProxy implements IModProxy {
 
     @Override
     public void registerRecipes() {}
+
+    @Override
+    public int getMetaCount() {
+        return 8;
+    }
+
+    @Override
+    public String getModPrefix() {
+        return "gt";
+    }
+
+    @Override
+    public TileEntity createTileEntity(int meta) {
+        return meta % 2 != 0 ? new TileEntityGregTechProducer(meta / 2)
+                             : new TileEntityGregTechConsumer(meta / 2);
+    }
 }

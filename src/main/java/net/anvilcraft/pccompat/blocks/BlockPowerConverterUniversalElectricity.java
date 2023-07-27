@@ -1,20 +1,11 @@
 package net.anvilcraft.pccompat.blocks;
 
-import covers1624.powerconverters.block.BlockPowerConverter;
-import covers1624.powerconverters.gui.PCCreativeTab;
-import net.anvilcraft.pccompat.tiles.TileEntityUniversalElectricityConsumer;
-import net.anvilcraft.pccompat.tiles.TileEntityUniversalElectricityProducer;
+import net.anvilcraft.pccompat.IModProxy;
 import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.IIcon;
-import net.minecraft.world.World;
 
-public class BlockPowerConverterUniversalElectricity extends BlockPowerConverter {
-    public IIcon[] icons;
-
-    public BlockPowerConverterUniversalElectricity() {
-        super(8); // 4 Consumers, 4 Producers
-        this.setCreativeTab(PCCreativeTab.tab);
+public class BlockPowerConverterUniversalElectricity extends BlockPCCConverter {
+    public BlockPowerConverterUniversalElectricity(IModProxy proxy) {
+        super(proxy);
     }
 
     @Override
@@ -43,14 +34,9 @@ public class BlockPowerConverterUniversalElectricity extends BlockPowerConverter
                     break;
             }
 
-            String texture_name = "pccompat:ue_" + voltage + "_" + type + "_" + state;
+            String texture_name = "pccompat:" + this.proxy.getModPrefix() + "_" + voltage
+                + "_" + type + "_" + state;
             this._icons[i] = reg.registerIcon(texture_name);
         }
-    }
-
-    @Override
-    public TileEntity createNewTileEntity(World world, int meta) {
-        return meta % 2 != 0 ? new TileEntityUniversalElectricityProducer(meta / 2)
-                             : new TileEntityUniversalElectricityConsumer(meta / 2);
     }
 }

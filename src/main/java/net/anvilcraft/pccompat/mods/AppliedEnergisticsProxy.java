@@ -1,13 +1,14 @@
 package net.anvilcraft.pccompat.mods;
 
-import appeng.api.AEApi;
 import com.google.common.base.Optional;
+
+import appeng.api.AEApi;
 import covers1624.powerconverters.api.registry.PowerSystemRegistry;
 import covers1624.powerconverters.api.registry.PowerSystemRegistry.PowerSystem;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.anvilcraft.pccompat.IModProxy;
-import net.anvilcraft.pccompat.blocks.BlockPowerConverterAppliedEnergistics;
-import net.anvilcraft.pccompat.items.ItemBlockPowerConverterAppliedEnergistics;
+import net.anvilcraft.pccompat.blocks.BlockPCCConverter;
+import net.anvilcraft.pccompat.items.ItemBlockPowerConverter;
 import net.anvilcraft.pccompat.recipe.RecipeBuilder;
 import net.anvilcraft.pccompat.recipe.ShapedOreRecipeAdapter;
 import net.anvilcraft.pccompat.recipe.ShapelessOreRecipeAdapter;
@@ -15,6 +16,7 @@ import net.anvilcraft.pccompat.tiles.TileEntityAppliedEnergisticsConsumer;
 import net.anvilcraft.pccompat.tiles.TileEntityAppliedEnergisticsProducer;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
 
 public class AppliedEnergisticsProxy implements IModProxy {
     public static PowerSystem powerSystem;
@@ -30,8 +32,8 @@ public class AppliedEnergisticsProxy implements IModProxy {
     @Override
     public void registerBlocks() {
         GameRegistry.registerBlock(
-            blockPowerConverter = new BlockPowerConverterAppliedEnergistics(),
-            ItemBlockPowerConverterAppliedEnergistics.class,
+            blockPowerConverter = new BlockPCCConverter(this),
+            ItemBlockPowerConverter.class,
             "power_converter_applied_energistics"
         );
     }
@@ -71,5 +73,16 @@ public class AppliedEnergisticsProxy implements IModProxy {
             .ingredient(new ItemStack(blockPowerConverter, 1, 1))
             .output(new ItemStack(blockPowerConverter, 1, 0))
             .register();
+    }
+
+    @Override
+    public String getModPrefix() {
+        return "ae";
+    }
+
+    @Override
+    public TileEntity createTileEntity(int meta) {
+        return meta == 0 ? new TileEntityAppliedEnergisticsConsumer()
+                         : new TileEntityAppliedEnergisticsProducer();
     }
 }
