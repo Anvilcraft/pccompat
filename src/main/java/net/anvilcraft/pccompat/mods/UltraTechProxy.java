@@ -22,7 +22,7 @@ public class UltraTechProxy implements IModProxy {
     @Override
     public void registerPowerSystem() {
         PowerSystemRegistry.registerPowerSystem(
-            powerSystem = new PowerSystem("Quantum Power", "QP", 20000, "QP/t")
+            powerSystem = new PowerSystem("UltraTech", "UT", 20000, "QP/t")
         );
     }
 

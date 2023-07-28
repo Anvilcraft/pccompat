@@ -23,7 +23,7 @@ public class ProjectRedProxy implements IModProxy {
     @Override
     public void registerPowerSystem() {
         PowerSystemRegistry.registerPowerSystem(
-            powerSystem = new PowerSystem("Bluetricity", "BT", 7000, "W")
+            powerSystem = new PowerSystem("ProjectRed", "PR", 7000, "W")
         );
     }
 

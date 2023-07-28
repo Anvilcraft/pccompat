@@ -23,7 +23,7 @@ public class MagneticraftProxy implements IModProxy {
     @Override
     public void registerPowerSystem() {
         PowerSystemRegistry.registerPowerSystem(
-            powerSystem = new PowerSystem("Joules", "J", 100, "W")
+            powerSystem = new PowerSystem("Magneticraft", "MC", 100, "W")
         );
     }
 

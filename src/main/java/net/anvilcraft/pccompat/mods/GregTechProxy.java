@@ -24,8 +24,8 @@ public class GregTechProxy implements IModProxy {
     public void registerPowerSystem() {
         PowerSystemRegistry.registerPowerSystem(
             powerSystem = new PowerSystem(
-                "Electricity Units",
-                "EU",
+                "GregTech",
+                "GT",
                 4000,
                 new String[] { "LV", "MV", "HV", "EV" },
                 new int[] { 32, 128, 512, 2048 },

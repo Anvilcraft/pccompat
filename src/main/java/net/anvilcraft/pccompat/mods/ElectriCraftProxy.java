@@ -22,8 +22,8 @@ public class ElectriCraftProxy implements IModProxy {
         PowerSystemRegistry.registerPowerSystem(
             powerSystem = new PowerSystem(
                 // Scale "Ammount" determined experimentally
-                "Joules",
-                "J",
+                "ElectriCraft",
+                "EC",
                 120 / 20,
                 "W"
             )

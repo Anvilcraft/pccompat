@@ -24,7 +24,7 @@ public class RedPowerProxy implements IModProxy {
     @Override
     public void registerPowerSystem() {
         PowerSystemRegistry.registerPowerSystem(
-            powerSystem = new PowerSystem("Bluetricity", "BT", 7000, "W")
+            powerSystem = new PowerSystem("RedPower", "RP", 7000, "W")
         );
     }
 
