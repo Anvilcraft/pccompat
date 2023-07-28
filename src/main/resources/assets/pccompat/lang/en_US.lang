@@ -36,3 +36,6 @@ pccompat:power_converter_rc_1.name=Railcraft Producer
 
 pccompat:power_converter_mc_0.name=Magneticraft Consumer
 pccompat:power_converter_mc_1.name=Magneticraft Producer
+
+pccompat:power_converter_ec_0.name=ElectriCraft Consumer
+pccompat:power_converter_ec_1.name=ElectriCraft Producer
