@@ -40,14 +40,7 @@ repositories {
     }
     maven {
         name "central"
-        url "https://maven.thorfusion.com/artifactory/central/"
-    }
-    maven {
-        name = "ic2"
-        url = "https://maven.ic2.player.to/"
-        metadataSources {
-            artifact()
-        }                                                                                                                                       
+        url "https://nexus.covers1624.net/repository/maven-hosted/"
     }
 }
 
