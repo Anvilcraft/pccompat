@@ -1,20 +1,21 @@
 package net.anvilcraft.pccompat.tiles;
 
-import api.hbm.energy.IEnergyConnector;
+import api.hbm.energymk2.IEnergyConnectorMK2;
+import api.hbm.energymk2.IEnergyReceiverMK2;
 import covers1624.powerconverters.tile.main.TileEntityEnergyConsumer;
 import net.anvilcraft.pccompat.mods.HBMProxy;
 import net.minecraft.util.MathHelper;
 import net.minecraftforge.common.util.ForgeDirection;
 
 public class TileEntityHBMConsumer
-    extends TileEntityEnergyConsumer<IEnergyConnector> implements IEnergyConnector {
+    extends TileEntityEnergyConsumer<IEnergyConnectorMK2> implements IEnergyReceiverMK2 {
     private boolean isLoaded = true;
     private boolean recursionBrake = false;
     private boolean transferLastTick = false;
     private double lastTransfer = 0.0;
 
     public TileEntityHBMConsumer() {
-        super(HBMProxy.powerSystem, 0, IEnergyConnector.class);
+        super(HBMProxy.powerSystem, 0, IEnergyConnectorMK2.class);
     }
 
     @Override
@@ -85,5 +86,10 @@ public class TileEntityHBMConsumer
         this.transferLastTick = true;
 
         return ret;
+    }
+
+    @Override
+    public void setPower(long power) {
+
     }
 }
