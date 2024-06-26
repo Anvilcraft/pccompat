@@ -23,7 +23,7 @@ apply plugin: "maven-publish"
 sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
 
-version = "0.2.0"
+version = "0.2.1"
 group= "net.anvilcraft"
 archivesBaseName = "pccompat"
 
