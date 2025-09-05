@@ -2,7 +2,9 @@ package net.anvilcraft.pccompat.tiles;
 
 import api.hbm.energymk2.IEnergyConnectorMK2;
 import api.hbm.energymk2.IEnergyProviderMK2;
+import covers1624.powerconverters.tile.main.TileEntityEnergyBridge;
 import covers1624.powerconverters.tile.main.TileEntityEnergyProducer;
+import net.anvilcraft.pccompat.Utils;
 import net.anvilcraft.pccompat.mods.HBMProxy;
 import net.minecraft.util.MathHelper;
 import net.minecraftforge.common.util.ForgeDirection;
@@ -41,7 +43,6 @@ public class TileEntityHBMProducer
 
         this.recursionBrake = false;
 
-        //TODO: find a way for the energy transfer to work with cables
         long tmp = this.subBuffer;
         this.subBuffer = 0;
 
@@ -50,17 +51,34 @@ public class TileEntityHBMProducer
 
     @Override
     public void setPower(long power) {
-        this.subBuffer = power;
+        TileEntityEnergyBridge bridge = this.getFirstBridge();
+        if (this.subBuffer != 0) {
+            this.subBuffer = power;
+        } else if (bridge != null) {
+            double energy = power * this.getPowerSystem().getScaleAmmount();
+            double currentEnergy = bridge.getEnergyStored();
+            double diff = energy - currentEnergy;
+            bridge.storeEnergy(diff, false);
+            ForgeDirection side = Utils.getSide(bridge, this);
+            Utils.getOutputRates(bridge).put(side, -diff / this.getPowerSystem().getScaleAmmount());
+        }
     }
 
     @Override
     public long getPower() {
-        return this.subBuffer;
+        TileEntityEnergyBridge bridge = this.getFirstBridge();
+        if (this.subBuffer != 0) {
+            return this.subBuffer;
+        } else if (bridge == null) {
+            return 0;
+        } else {
+            return (long)(bridge.getEnergyStored() / this.getPowerSystem().getScaleAmmount());
+        }
     }
 
     @Override
     public long getMaxPower() {
-        return this.subBuffer;
+        return this.getPower();
     }
 
     @Override
