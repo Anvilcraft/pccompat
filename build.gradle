@@ -23,7 +23,7 @@ apply plugin: "maven-publish"
 sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
 
-version = "0.2.1"
+version = "0.3.0"
 group= "net.anvilcraft"
 archivesBaseName = "pccompat"
 
@@ -61,7 +61,7 @@ dependencies {
     implementation "mods:HEXCraft:1.7.10-0.13.2:deobf"
     implementation "mods:magneticraft:0.6.1:deobf"
     implementation "mods:ElectricalAge:1.20.3:deobf"
-    implementation "net.industrial-craft:industrialcraft-2:2.2.827-experimental:dev"
+    implementation "net.industrial-craft:industrialcraft-2:2.2.827-experimental:deobf"
     implementation "mods:Ultratech:1.7.10-0.9.6.1:deobf"
     implementation "mods:gregtech:5.09.31:dev"
     implementation "mods:Railcraft_1.7.10:9.12.2.0"
